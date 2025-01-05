@@ -1,0 +1,5 @@
+<screen>
+    <subscreens>
+        <subscreen name="api" location="component://your-component/screen/api.xml" />
+    </subscreens>
+</screen>

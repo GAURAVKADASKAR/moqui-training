@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
+<!-- // service for fetch the data -->
+<service verb="fetch" noun="MoquiTraining">
+
+<in-parameters>
+
+<parameter name="trainingId" required="true"/>
+<parameter name="trainingName"/>
+</in-parameters>
+<out-parameters>
+<parameter  name="trainingList" required="true"/>
+
+</out-parameters>
+<actions>
+
+<entity-find entity-name="moqui.training.MoquiTraining" list="trainingList">
+
+<econdition  field-name="trainingId" ignore-if-empty="true"/>
+<econdition  field-name="trainingName" ignore-if-empty="true"/>
+<select-field field-name="trainingName"/>
+<select-field field-name="trainingId"/>
+</entity-find>
+</actions>
+</service>
+
+<!-- // service for update data -->
+
+<service verb="store" type="inline" noun="MoquiTraining">
+<in-parameters>
+<parameter name="trainingId" required="true"/>
+<parameter name="trainingName" />
+<parameter name="trainingDate"/>
+<parameter name="trainingPrice" />
+<parameter name="trainingDuration"/>
+
+</in-parameters>
+<out-parameters>
+
+<parameter  name="trainingId" required="true"/>
+
+</out-parameters>
+
+<actions>
+
+<entity-find-one entity-name="moqui.training.MoquiTraining" value-field="filterdata">
+<field-map field-name="trainingId" from="context.trainingId" /> 
+</entity-find-one>
+
+<if condition="filterdata == null">
+ <entity-create entity-name="moqui.training.MoquiTraining">
+        <set field="trainingId" from="parameters.trainingId"/>
+        <set field="trainingName" from="parameters.trainingName"/>
+        <set field="trainingDate" from="parameters.trainingDate"/> 
+        <set field="trainingPrice" from="parameters.trainingPrice"/>
+        <set field="trainingDuration" from="parameters.trainingDuration"/>
+      </entity-create>
+
+</if>
+<if condition="filterdata != null">
+<set field="trainingName" from="parameters.trainingName"/>
+<set field="trainingPrice" from="parameters.trainingPrice"/>
+<set field="trainingDuration" from="parameters.trainingDuration"/>
+</if>
+
+</actions>
+
+</service>
+
+</services>
