@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     
-    <service service-name="create#MoquiTraining" noun="MoquiTraining" verb="create" type="entity-auto" >
+    <service  noun="MoquiTraining" verb="create" type="entity-auto" >
     <in-parameters>
     <parameter name="trainingId"   required="true" ></parameter>
     <parameter name="trainingName"   required="true" ></parameter>
@@ -13,7 +13,7 @@
     <parameter name="trainingId"  ></parameter>
     </out-parameters>
     </service>
-     <service service-name="Delete#MoquiTraining" noun="MoquiTraining" verb="delete" type="entity-auto" >
+     <service noun="MoquiTraining" verb="delete" type="entity-auto" >
     <in-parameters>
     <parameter name="trainingId"   required="true" ></parameter>
     </in-parameters>
