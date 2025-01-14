@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
 <!-- // service for fetch the data -->
-<service verb="fetch" noun="MoquiTraining">
+<service verb="get" noun="MoquiTraining">
 
 <in-parameters>
 
-<parameter name="trainingId" required="true"/>
+<parameter name="trainingId"/>
 <parameter name="trainingName"/>
 </in-parameters>
 <out-parameters>
@@ -22,9 +22,10 @@
 <select-field field-name="trainingId"/>
 </entity-find>
 </actions>
+
 </service>
 
-<!-- // service for update data -->
+<!--  service for update data -->
 <service verb="store" type="inline" noun="MoquiTraining">
     <in-parameters>
         <auto-parameters include="all" />

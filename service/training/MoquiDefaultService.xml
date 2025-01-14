@@ -1,0 +1,22 @@
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
+    <service verb="create" noun="MoquiTraining" type="inline">
+        <in-parameters>
+            <auto-parameters include="all" />
+        </in-parameters>
+        <out-parameters>
+            <auto-parameters include="pk" required="true" />
+        </out-parameters>
+        <actions>
+            <script>
+            <![CDATA[            
+                moquiTraining = ec.entity.makeValue("MoquiTraining")
+                moquiTraining.setFields(context, false, null, null)
+                moquiTraining.create()
+            return;
+            ]]>
+            
+            </script>
+        </actions>
+    </service>
+</services>
